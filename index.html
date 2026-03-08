@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>John H. Rios — Finance & Quantitative Strategy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal: #0D9488; --teal-light: #14B8A6; --teal-pale: #CCFBF1; --teal-dark: #0F766E;
+      --white: #FFFFFF; --off-white: #F8FAFA; --gray-50: #F9FAFB; --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB; --gray-400: #9CA3AF; --gray-600: #4B5563; --gray-800: #1F2937; --black: #0A0F0E;
+      --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif;
+      --max-w: 1180px; --radius: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--white); color: var(--gray-800); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    em { font-style: italic; font-family: var(--font-display); color: var(--teal); }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+
+    /* NAV */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s, box-shadow 0.3s; }
+    .nav.scrolled { border-color: var(--gray-200); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.4rem; color: var(--teal); letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--gray-600); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links .nav-cta { background: var(--teal); color: white; padding: 0.5rem 1.25rem; border-radius: 100px; transition: background 0.2s, transform 0.15s; }
+    .nav-links .nav-cta:hover { background: var(--teal-dark); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--gray-800); border-radius: 2px; }
+
+    /* MOBILE MENU */
+    .mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; background: white; padding: 1.5rem 2rem; border-bottom: 1px solid var(--gray-200); z-index: 99; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { display: flex; flex-direction: column; gap: 1rem; }
+    .mobile-menu a { font-size: 1rem; font-weight: 500; color: var(--gray-800); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 7rem 3rem 4rem; position: relative; overflow: hidden; background: var(--white); }
+    .hero-bg-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--gray-100) 1px, transparent 1px), linear-gradient(90deg, var(--gray-100) 1px, transparent 1px); background-size: 48px 48px; opacity: 0.5; mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%); }
+    .hero-content { max-width: var(--max-w); margin: 0 auto; width: 100%; position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 3rem; }
+    .hero-text { flex: 1; min-width: 0; }
+    .hero-photo { flex-shrink: 0; }
+    .hero-photo-frame { position: relative; width: 300px; height: 340px; border-radius: 20px; overflow: hidden; box-shadow: 0 0 0 1px var(--gray-200), 0 20px 60px rgba(0,0,0,0.12); }
+    .hero-photo-frame::before { content: ''; position: absolute; inset: 0; border-radius: 20px; background: linear-gradient(160deg, rgba(13,148,136,0.12) 0%, transparent 60%); z-index: 1; pointer-events: none; }
+    .hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform 0.5s ease; }
+    .hero-photo-frame:hover img { transform: scale(1.03); }
+    .hero-eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.5rem; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(4rem, 10vw, 9rem); line-height: 0.95; color: var(--black); margin-bottom: 2rem; letter-spacing: -0.02em; }
+    .hero-sub { font-size: 1.1rem; color: var(--gray-600); max-width: 500px; margin-bottom: 2.5rem; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--teal); color: white; padding: 0.85rem 2rem; border-radius: 100px; font-weight: 600; font-size: 0.9rem; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 14px rgba(13,148,136,0.3); }
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,148,136,0.35); }
+    .btn-secondary { color: var(--gray-800); padding: 0.85rem 2rem; border-radius: 100px; font-weight: 600; font-size: 0.9rem; border: 1.5px solid var(--gray-200); transition: border-color 0.2s, transform 0.15s, color 0.2s; }
+    .btn-secondary:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+    .hero-stats { max-width: var(--max-w); margin: 4rem auto 0; width: 100%; display: flex; align-items: center; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; position: relative; z-index: 1; }
+    .stat { flex: 1; padding: 1.75rem 2rem; display: flex; flex-direction: column; gap: 0.25rem; }
+    .stat-num { font-family: var(--font-display); font-size: 2rem; color: var(--teal); }
+    .stat-label { font-size: 0.8rem; color: var(--gray-400); font-weight: 500; letter-spacing: 0.03em; }
+    .stat-divider { width: 1px; height: 60px; background: var(--gray-200); }
+    .scroll-indicator { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--gray-400); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; z-index: 1; }
+    .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--teal), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+    @keyframes scrollPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* SECTIONS */
+    .section { padding: 6rem 0; }
+    .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; color: var(--black); margin-bottom: 3rem; letter-spacing: -0.02em; }
+
+    /* ABOUT */
+    .about { background: var(--off-white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { color: var(--gray-600); margin-bottom: 1rem; font-size: 1.05rem; }
+    .about-text .section-title { margin-bottom: 1.5rem; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.75rem; }
+    .about-tags span { font-size: 0.8rem; font-weight: 500; background: white; border: 1px solid var(--gray-200); padding: 0.35rem 0.85rem; border-radius: 100px; color: var(--gray-600); }
+    .about-certs { display: flex; flex-direction: column; gap: 1rem; }
+    .cert-card { background: white; border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem; transition: transform 0.2s, box-shadow 0.2s; }
+    .cert-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+    .cert-icon { font-size: 1.4rem; }
+    .cert-title { font-weight: 700; font-size: 0.95rem; color: var(--black); }
+    .cert-sub { font-size: 0.8rem; color: var(--gray-400); }
+
+    /* EXPERIENCE */
+    .experience { background: var(--white); }
+    .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .exp-col-heading { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--gray-200); }
+    .exp-card { padding: 1.5rem; border: 1px solid var(--gray-200); border-radius: var(--radius); margin-bottom: 1rem; background: var(--gray-50); transition: border-color 0.2s, box-shadow 0.2s; }
+    .exp-card:hover { border-color: var(--teal-light); box-shadow: 0 4px 20px rgba(13,148,136,0.08); }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; gap: 0.5rem; }
+    .exp-role { font-weight: 700; font-size: 0.95rem; color: var(--black); }
+    .exp-company { font-size: 0.82rem; color: var(--teal); font-weight: 500; margin-top: 0.1rem; }
+    .exp-date { font-size: 0.75rem; color: var(--gray-400); white-space: nowrap; }
+    .exp-card li { font-size: 0.85rem; color: var(--gray-600); padding: 0.2rem 0 0.2rem 1rem; position: relative; }
+    .exp-card li::before { content: '–'; position: absolute; left: 0; color: var(--teal-light); }
+
+    /* PROJECTS */
+    .projects { background: var(--off-white); }
+    .projects-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 1.5rem; align-items: start; }
+    .project-card { background: white; border: 1px solid var(--gray-200); border-radius: 16px; padding: 2rem; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.09); }
+    .project-card.featured { border-color: var(--teal-light); background: linear-gradient(135deg, #f0fdfa 0%, white 60%); }
+    .project-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); background: var(--teal-pale); display: inline-block; padding: 0.25rem 0.75rem; border-radius: 100px; margin-bottom: 1rem; }
+    .project-card h3 { font-family: var(--font-display); font-size: 1.3rem; line-height: 1.25; color: var(--black); margin-bottom: 0.85rem; }
+    .project-card p { font-size: 0.875rem; color: var(--gray-600); line-height: 1.65; flex: 1; }
+    .project-highlights { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .highlight { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: var(--gray-600); }
+    .project-date { margin-top: 1.5rem; font-size: 0.75rem; color: var(--gray-400); font-weight: 500; }
+
+    /* SKILLS */
+    .skills { background: var(--white); }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .skill-group-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 0.85rem; }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .pill { font-size: 0.83rem; font-weight: 500; padding: 0.4rem 0.9rem; border-radius: 100px; border: 1.5px solid var(--gray-200); color: var(--gray-600); background: var(--gray-50); transition: border-color 0.15s, color 0.15s; cursor: default; }
+    .pill:hover { border-color: var(--teal-light); color: var(--teal-dark); }
+    .pill.teal { background: var(--teal-pale); border-color: var(--teal-light); color: var(--teal-dark); font-weight: 600; }
+
+    /* CONTACT */
+    .contact { background: var(--black); color: white; }
+    .contact .section-label { color: var(--teal-light); }
+    .contact .section-title { color: white; }
+    .contact em { color: var(--teal-light); }
+    .contact-inner { max-width: 700px; }
+    .contact-sub { font-size: 1rem; color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; margin-top: -1.5rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link { display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); transition: background 0.2s, border-color 0.2s, transform 0.15s; }
+    .contact-link:hover { background: rgba(13,148,136,0.15); border-color: var(--teal); transform: translateX(6px); }
+    .contact-link-icon { width: 44px; height: 44px; background: rgba(13,148,136,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800; color: var(--teal-light); flex-shrink: 0; }
+    .contact-link-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 0.1rem; }
+    .contact-link-value { font-size: 0.95rem; color: white; }
+
+    /* FOOTER */
+    .footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.07); padding: 1.75rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.1rem; color: var(--teal); }
+    .footer-copy, .footer-school { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.12s; }
+    .delay-2 { transition-delay: 0.24s; }
+    .delay-3 { transition-delay: 0.36s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav { padding: 1.25rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      .hero-content { flex-direction: column-reverse; align-items: flex-start; gap: 2rem; }
+      .hero-photo-frame { width: 180px; height: 200px; }
+      .hero-stats { flex-direction: column; }
+      .stat-divider { width: 60px; height: 1px; }
+      .about-grid, .exp-grid, .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .section { padding: 4rem 0; }
+      .container { padding: 0 1.5rem; }
+      .footer-inner { flex-direction: column; text-align: center; gap: 0.4rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 3.5rem; }
+      .section-title { font-size: 2rem; }
+      .exp-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav-logo">JHR</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#experience" class="mobile-link">Experience</a></li>
+      <li><a href="#projects" class="mobile-link">Projects</a></li>
+      <li><a href="#skills" class="mobile-link">Skills</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-eyebrow reveal">Finance · Quantitative Strategy · Technology</div>
+        <h1 class="hero-title reveal delay-1">John H.<br><em>Rios</em></h1>
+        <p class="hero-sub reveal delay-2">BS Finance candidate at Rutgers Business School.<br>Builder of trading systems, e-commerce operations, and data-driven solutions.</p>
+        <div class="hero-actions reveal delay-3">
+          <a href="#projects" class="btn-primary">View My Work</a>
+          <a href="#contact" class="btn-secondary">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-photo reveal delay-2">
+        <div class="hero-photo-frame">
+          <img src="IMG_5884.PNG" alt="John H. Rios" />
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats reveal delay-3">
+      <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Options Trades Executed</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">$10k+</span><span class="stat-label">E-Commerce Revenue</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">1.2–1.5</span><span class="stat-label">Simulated Sharpe Ratio</span></div>
+    </div>
+    <div class="scroll-indicator"><div class="scroll-line"></div><span>Scroll</span></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-label">About</div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <h2 class="section-title">Finance meets<br><em>engineering mindset.</em></h2>
+          <p>I'm a Finance student at Rutgers Business School with minors in Computer Science and Mathematics. I combine quantitative rigor with hands-on entrepreneurial experience — from building algorithmic trading strategies to running profitable e-commerce operations.</p>
+          <p>My work lives at the intersection of financial theory and practical implementation. Whether it's backtesting a mean-reversion strategy in Python or sourcing inventory for resale, I'm driven by measurable outcomes and iterative improvement.</p>
+          <div class="about-tags">
+            <span>Rutgers Business School</span><span>Expected May 2028</span><span>GPA 3.04</span><span>West Orange, NJ</span>
+          </div>
+        </div>
+        <div class="about-certs reveal delay-1">
+          <div class="cert-card"><div class="cert-icon">📊</div><div><div class="cert-title">FMVA</div><div class="cert-sub">Financial Modeling &amp; Valuation Analyst</div></div></div>
+          <div class="cert-card"><div class="cert-icon">🗄️</div><div><div class="cert-title">BIDA</div><div class="cert-sub">Business Intelligence &amp; Data Analyst</div></div></div>
+          <div class="cert-card"><div class="cert-icon">📈</div><div><div class="cert-title">Bloomberg</div><div class="cert-sub">Bloomberg Spreadsheet Analysis</div></div></div>
+          <div class="cert-card"><div class="cert-icon">🏦</div><div><div class="cert-title">Bergen CC</div><div class="cert-sub">AA · Economics &amp; Banking/Finance</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience section" id="experience">
+    <div class="container">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title reveal">Where I've<br><em>applied my craft.</em></h2>
+      <div class="exp-grid">
+        <div class="exp-col">
+          <div class="exp-col-heading">Professional</div>
+          <div class="exp-card reveal">
+            <div class="exp-header"><div><div class="exp-role">Portfolio Manager</div><div class="exp-company">Independent · West Orange, NJ</div></div><div class="exp-date">Feb 2021 – Present</div></div>
+            <ul><li>Executed 500+ short-dated $SPY &amp; $QQQ options contracts and equity trades using structured risk frameworks</li><li>Developed and backtested discretionary and systematic trading strategies, achieving simulated Sharpe ratios of 1.2–1.5</li></ul>
+          </div>
+          <div class="exp-card reveal delay-1">
+            <div class="exp-header"><div><div class="exp-role">Store Owner</div><div class="exp-company">Independent · West Orange, NJ</div></div><div class="exp-date">Feb 2022 – Present</div></div>
+            <ul><li>Sourced and resold liquidation return items on eBay; 500+ items sold with ~35% average margin</li><li>Exceeded $10,000 in sales revenue; maintains 100% positive seller rating</li></ul>
+          </div>
+          <div class="exp-card reveal delay-2">
+            <div class="exp-header"><div><div class="exp-role">E-Commerce Operations Manager</div><div class="exp-company">Independent · West Orange, NJ</div></div><div class="exp-date">Apr 2020 – Aug 2022</div></div>
+            <ul><li>Built and operated multiple Shopify storefronts capitalizing on social media trends; 30–40% gross margins</li><li>Managed supplier relations, order fulfillment, and customer service with a 98% positive rating</li></ul>
+          </div>
+        </div>
+        <div class="exp-col">
+          <div class="exp-col-heading">Work &amp; Simulations</div>
+          <div class="exp-card reveal">
+            <div class="exp-header"><div><div class="exp-role">Markets Quantitative Analysis</div><div class="exp-company">Citi · Forage</div></div><div class="exp-date">Dec 2025</div></div>
+            <ul><li>Priced commodity derivatives and performed quantitative risk analysis using live market data</li><li>Evaluated hedging and securities structuring strategies across trade units</li></ul>
+          </div>
+          <div class="exp-card reveal delay-1">
+            <div class="exp-header"><div><div class="exp-role">Risk Analysis</div><div class="exp-company">Goldman Sachs · Forage</div></div><div class="exp-date">Nov – Dec 2025</div></div>
+            <ul><li>Analyzed client risk profiles and conducted credit risk analysis using quantified financial data</li><li>Developed mitigation strategies for real estate investment risks aligned with client objectives</li></ul>
+          </div>
+          <div class="exp-card reveal delay-2">
+            <div class="exp-header"><div><div class="exp-role">Interior Home Painter</div><div class="exp-company">Van Gogh Painting · Woodland Park, NJ</div></div><div class="exp-date">Mar 2024 – Present</div></div>
+            <ul><li>Completed 30+ residential rooms, mastering surface prep, masking, and precision application</li><li>Improved project efficiency through organized workflow and tool maintenance practices</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title reveal">Strategies built,<br><em>tested, deployed.</em></h2>
+      <div class="projects-grid">
+        <div class="project-card featured reveal">
+          <div class="project-tag">Python · NumPy · Pandas</div>
+          <h3>Volatility-Normalized<br>Deviation Strategy</h3>
+          <p>A discretionary mean-reversion strategy for $SPY that conditions entries on volatility expansion and multi-timeframe trend alignment. Converted to a fully systematic strategy in Python with comprehensive backtesting across different volatility regimes.</p>
+          <div class="project-highlights">
+            <div class="highlight"><span>🎯</span> Mean-reversion logic conditioned on vol expansion</div>
+            <div class="highlight"><span>🔁</span> Backtested across multiple volatility regimes</div>
+            <div class="highlight"><span>🐍</span> NumPy / Pandas for numerical analysis &amp; simulation</div>
+          </div>
+          <div class="project-date">May – Sep 2025</div>
+        </div>
+        <div class="project-card reveal delay-1">
+          <div class="project-tag">Options · Risk Mgmt</div>
+          <h3>Live Options Trading Portfolio</h3>
+          <p>Designed and managed a real-money portfolio of 500+ short-dated SPY/QQQ options contracts. Applies systematic risk frameworks and backtested strategies achieving Sharpe ratios of 1.2–1.5 before live deployment.</p>
+          <div class="project-highlights">
+            <div class="highlight"><span>📉</span> Short-dated SPY &amp; QQQ options</div>
+            <div class="highlight"><span>⚖️</span> Risk-managed exposure frameworks</div>
+          </div>
+          <div class="project-date">Feb 2021 – Present</div>
+        </div>
+        <div class="project-card reveal delay-2">
+          <div class="project-tag">E-Commerce · Shopify</div>
+          <h3>Trend-Driven Shopify Storefronts</h3>
+          <p>Identified social media-driven consumer trends early and built multiple Shopify storefronts to capitalize on them. End-to-end operations: sourcing, logistics, and customer service at 30–40% gross margins.</p>
+          <div class="project-highlights">
+            <div class="highlight"><span>💰</span> 30–40% gross margins</div>
+            <div class="highlight"><span>⭐</span> 98% positive ratings</div>
+          </div>
+          <div class="project-date">Apr 2020 – Aug 2022</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title reveal">Tools &amp;<br><em>technologies.</em></h2>
+      <div class="skills-grid">
+        <div class="skill-group reveal">
+          <div class="skill-group-label">Programming</div>
+          <div class="skill-pills"><span class="pill teal">Python</span><span class="pill teal">NumPy</span><span class="pill teal">Pandas</span><span class="pill teal">SQL (Advanced)</span><span class="pill teal">MATLAB</span></div>
+        </div>
+        <div class="skill-group reveal delay-1">
+          <div class="skill-group-label">Finance &amp; Analytics</div>
+          <div class="skill-pills"><span class="pill">Bloomberg Terminal</span><span class="pill">Options Trading</span><span class="pill">Risk Analysis</span><span class="pill">Financial Modeling</span><span class="pill">Derivatives Pricing</span><span class="pill">Backtesting</span></div>
+        </div>
+        <div class="skill-group reveal delay-2">
+          <div class="skill-group-label">Business &amp; Operations</div>
+          <div class="skill-pills"><span class="pill">E-Commerce (Shopify)</span><span class="pill">Supplier Relations</span><span class="pill">Customer Service</span><span class="pill">Inventory Mgmt</span><span class="pill">eBay Seller</span></div>
+        </div>
+        <div class="skill-group reveal delay-3">
+          <div class="skill-group-label">Languages</div>
+          <div class="skill-pills"><span class="pill">English (Native)</span><span class="pill">Spanish (Native)</span><span class="pill">Italian (Limited)</span><span class="pill">Mandarin (Elementary)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <div class="contact-inner reveal">
+        <h2 class="section-title">Let's connect<br><em>and build something.</em></h2>
+        <p class="contact-sub">I'm always open to discussing opportunities in finance, quantitative strategy, or technology. Reach out through any of the channels below.</p>
+        <div class="contact-links">
+          <a href="mailto:john.rios@rutgers.edu" class="contact-link">
+            <div class="contact-link-icon">✉</div>
+            <div><div class="contact-link-label">Email</div><div class="contact-link-value">john.rios@rutgers.edu</div></div>
+          </a>
+          <a href="tel:+19739354089" class="contact-link">
+            <div class="contact-link-icon">☎</div>
+            <div><div class="contact-link-label">Phone</div><div class="contact-link-value">+1 (973) 935-4089</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/john-rios-rbs" target="_blank" class="contact-link">
+            <div class="contact-link-icon">in</div>
+            <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">john-rios-rbs</div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">JHR</span>
+        <span class="footer-copy">© 2026 John H. Rios · West Orange, NJ</span>
+        <span class="footer-school">Rutgers Business School '28</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scrolled nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
