@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>John H. Rios — Finance & Quantitative Strategy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo">JHR</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#experience" class="mobile-link">Experience</a></li>
+      <li><a href="#projects" class="mobile-link">Projects</a></li>
+      <li><a href="#skills" class="mobile-link">Skills</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-eyebrow reveal">Finance · Quantitative Strategy · Technology</div>
+        <h1 class="hero-title reveal delay-1">
+          John H.<br><em>Rios</em>
+        </h1>
+        <p class="hero-sub reveal delay-2">
+          BS Finance candidate at Rutgers Business School.<br>
+          Builder of trading systems, e-commerce operations, and data-driven solutions.
+        </p>
+        <div class="hero-actions reveal delay-3">
+          <a href="#projects" class="btn-primary">View My Work</a>
+          <a href="#contact" class="btn-secondary">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-photo reveal delay-2">
+        <div class="hero-photo-frame">
+          <img src="IMG_5884.jpeg" alt="John H. Rios" />
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats reveal delay-3">
+      <div class="stat">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Options Trades Executed</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">$10k+</span>
+        <span class="stat-label">E-Commerce Revenue</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">1.2–1.5</span>
+        <span class="stat-label">Simulated Sharpe Ratio</span>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-label">About</div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <h2 class="section-title">Finance meets<br><em>engineering mindset.</em></h2>
+          <p>I'm a Finance student at Rutgers Business School with minors in Computer Science and Mathematics. I combine quantitative rigor with hands-on entrepreneurial experience — from building algorithmic trading strategies to running profitable e-commerce operations.</p>
+          <p>My work lives at the intersection of financial theory and practical implementation. Whether it's backtesting a mean-reversion strategy in Python or sourcing inventory for resale, I'm driven by measurable outcomes and iterative improvement.</p>
+          <div class="about-tags">
+            <span>Rutgers Business School</span>
+            <span>Expected May 2028</span>
+            <span>GPA 3.04</span>
+            <span>West Orange, NJ</span>
+          </div>
+        </div>
+        <div class="about-certs reveal delay-1">
+          <div class="cert-card">
+            <div class="cert-icon">📊</div>
+            <div>
+              <div class="cert-title">FMVA</div>
+              <div class="cert-sub">Financial Modeling & Valuation Analyst</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">🗄️</div>
+            <div>
+              <div class="cert-title">BIDA</div>
+              <div class="cert-sub">Business Intelligence & Data Analyst</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">📈</div>
+            <div>
+              <div class="cert-title">Bloomberg</div>
+              <div class="cert-sub">Bloomberg Spreadsheet Analysis</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">🏦</div>
+            <div>
+              <div class="cert-title">Bergen CC</div>
+              <div class="cert-sub">AA · Economics & Banking/Finance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience section" id="experience">
+    <div class="container">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title reveal">Where I've<br><em>applied my craft.</em></h2>
+
+      <div class="exp-grid">
+
+        <div class="exp-col">
+          <div class="exp-col-heading">Professional</div>
+
+          <div class="exp-card reveal">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Portfolio Manager</div>
+                <div class="exp-company">Independent · West Orange, NJ</div>
+              </div>
+              <div class="exp-date">Feb 2021 – Present</div>
+            </div>
+            <ul>
+              <li>Executed 500+ short-dated $SPY & $QQQ options contracts and equity trades using structured risk frameworks</li>
+              <li>Developed and backtested discretionary and systematic trading strategies, achieving simulated Sharpe ratios of 1.2–1.5</li>
+            </ul>
+          </div>
+
+          <div class="exp-card reveal delay-1">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Store Owner</div>
+                <div class="exp-company">Independent · West Orange, NJ</div>
+              </div>
+              <div class="exp-date">Feb 2022 – Present</div>
+            </div>
+            <ul>
+              <li>Sourced and resold liquidation return items on eBay; 500+ items sold with ~35% average margin</li>
+              <li>Exceeded $10,000 in sales revenue; maintains 100% positive seller rating</li>
+            </ul>
+          </div>
+
+          <div class="exp-card reveal delay-2">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">E-Commerce Operations Manager</div>
+                <div class="exp-company">Independent · West Orange, NJ</div>
+              </div>
+              <div class="exp-date">Apr 2020 – Aug 2022</div>
+            </div>
+            <ul>
+              <li>Built and operated multiple Shopify storefronts capitalizing on social media trends; 30–40% gross margins</li>
+              <li>Managed supplier relations, order fulfillment, and customer service with a 98% positive rating</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-col">
+          <div class="exp-col-heading">Work & Simulations</div>
+
+          <div class="exp-card reveal">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Markets Quantitative Analysis</div>
+                <div class="exp-company">Citi · Forage</div>
+              </div>
+              <div class="exp-date">Dec 2025</div>
+            </div>
+            <ul>
+              <li>Priced commodity derivatives and performed quantitative risk analysis using live market data</li>
+              <li>Evaluated hedging and securities structuring strategies across trade units</li>
+            </ul>
+          </div>
+
+          <div class="exp-card reveal delay-1">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Risk Analysis</div>
+                <div class="exp-company">Goldman Sachs · Forage</div>
+              </div>
+              <div class="exp-date">Nov – Dec 2025</div>
+            </div>
+            <ul>
+              <li>Analyzed client risk profiles and conducted credit risk analysis using quantified financial data</li>
+              <li>Developed mitigation strategies for real estate investment risks aligned with client objectives</li>
+            </ul>
+          </div>
+
+          <div class="exp-card reveal delay-2">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Interior Home Painter</div>
+                <div class="exp-company">Van Gogh Painting · Woodland Park, NJ</div>
+              </div>
+              <div class="exp-date">Mar 2024 – Present</div>
+            </div>
+            <ul>
+              <li>Completed 30+ residential rooms, mastering surface prep, masking, and precision application</li>
+              <li>Improved project efficiency through organized workflow and tool maintenance practices</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title reveal">Strategies built,<br><em>tested, deployed.</em></h2>
+
+      <div class="projects-grid">
+
+        <div class="project-card featured reveal">
+          <div class="project-tag">Python · NumPy · Pandas</div>
+          <h3>Volatility-Normalized<br>Deviation Strategy</h3>
+          <p>A discretionary mean-reversion strategy for $SPY that conditions entries on volatility expansion and multi-timeframe trend alignment. Converted to a fully systematic strategy in Python with comprehensive backtesting across different volatility regimes.</p>
+          <div class="project-highlights">
+            <div class="highlight"><span>🎯</span> Mean-reversion logic conditioned on vol expansion</div>
+            <div class="highlight"><span>🔁</span> Backtested across multiple volatility regimes</div>
+            <div class="highlight"><span>🐍</span> NumPy / Pandas for numerical analysis & simulation</div>
+          </div>
+          <div class="project-date">May – Sep 2025</div>
+        </div>
+
+        <div class="project-card reveal delay-1">
+          <div class="project-tag">Options · Risk Mgmt</div>
+          <h3>Live Options Trading Portfolio</h3>
+          <p>Designed and managed a real-money portfolio of 500+ short-dated SPY/QQQ options contracts. Applies systematic risk frameworks and has backtested strategies achieving Sharpe ratios of 1.2–1.5 before live deployment.</p>
+          <div class="project-highlights">
+            <div class="highlight"><span>📉</span> Short-dated SPY & QQQ options</div>
+            <div class="highlight"><span>⚖️</span> Risk-managed exposure frameworks</div>
+          </div>
+          <div class="project-date">Feb 2021 – Present</div>
+        </div>
+
+        <div class="project-card reveal delay-2">
+          <div class="project-tag">E-Commerce · Shopify</div>
+          <h3>Trend-Driven Shopify Storefronts</h3>
+          <p>Identified social media-driven consumer trends early and built multiple Shopify storefronts to capitalize on them. Managed end-to-end operations including supplier sourcing, logistics, and customer service at 30–40% gross margins.</p>
+          <div class="project-highlights">
+            <div class="highlight"><span>💰</span> 30–40% gross margins</div>
+            <div class="highlight"><span>⭐</span> 98% positive ratings</div>
+          </div>
+          <div class="project-date">Apr 2020 – Aug 2022</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title reveal">Tools &amp;<br><em>technologies.</em></h2>
+
+      <div class="skills-grid">
+        <div class="skill-group reveal">
+          <div class="skill-group-label">Programming</div>
+          <div class="skill-pills">
+            <span class="pill teal">Python</span>
+            <span class="pill teal">NumPy</span>
+            <span class="pill teal">Pandas</span>
+            <span class="pill teal">SQL (Advanced)</span>
+            <span class="pill teal">MATLAB</span>
+          </div>
+        </div>
+        <div class="skill-group reveal delay-1">
+          <div class="skill-group-label">Finance & Analytics</div>
+          <div class="skill-pills">
+            <span class="pill">Bloomberg Terminal</span>
+            <span class="pill">Options Trading</span>
+            <span class="pill">Risk Analysis</span>
+            <span class="pill">Financial Modeling</span>
+            <span class="pill">Derivatives Pricing</span>
+            <span class="pill">Backtesting</span>
+          </div>
+        </div>
+        <div class="skill-group reveal delay-2">
+          <div class="skill-group-label">Business & Operations</div>
+          <div class="skill-pills">
+            <span class="pill">E-Commerce (Shopify)</span>
+            <span class="pill">Supplier Relations</span>
+            <span class="pill">Customer Service</span>
+            <span class="pill">Inventory Mgmt</span>
+            <span class="pill">eBay Seller</span>
+          </div>
+        </div>
+        <div class="skill-group reveal delay-3">
+          <div class="skill-group-label">Languages</div>
+          <div class="skill-pills">
+            <span class="pill">English (Native)</span>
+            <span class="pill">Spanish (Native)</span>
+            <span class="pill">Italian (Limited)</span>
+            <span class="pill">Mandarin (Elementary)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <div class="contact-inner reveal">
+        <h2 class="section-title">Let's connect<br><em>and build something.</em></h2>
+        <p class="contact-sub">I'm always open to discussing opportunities in finance, quantitative strategy, or technology. Reach out through any of the channels below.</p>
+        <div class="contact-links">
+          <a href="/cdn-cgi/l/email-protection#f2989d9a9cdc809b9d81b280878695978081dc979687" class="contact-link">
+            <div class="contact-link-icon">✉</div>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value"><span class="__cf_email__" data-cfemail="6a0005020444180305192a181f1e0d0f1819440f0e1f">[email&#160;protected]</span></div>
+            </div>
+          </a>
+          <a href="tel:+19739354089" class="contact-link">
+            <div class="contact-link-icon">☎</div>
+            <div>
+              <div class="contact-link-label">Phone</div>
+              <div class="contact-link-value">+1 (973) 935-4089</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/john-rios-rbs" target="_blank" class="contact-link">
+            <div class="contact-link-icon">in</div>
+            <div>
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">john-rios-rbs</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">JHR</span>
+        <span class="footer-copy">© 2025 John H. Rios · West Orange, NJ</span>
+        <span class
